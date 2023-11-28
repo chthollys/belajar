@@ -1,0 +1,31 @@
+import math
+
+sort_k = []
+sort_answer = []
+max_cases = 0
+test_cases = int(input('test cases : '))
+for x in range(test_cases):
+    k = int(input("bilangan ke- : "))
+    sort_k.append(k)
+    if k > max_cases:
+        max_cases = k
+i = 1
+while i <= 1000:
+    kas = 0
+    div = 10
+    while i / div >= 1:
+        div *= 10
+    seperated_num = []
+    num_of_div = int(math.log(div, 10))
+    for b in range(num_of_div - 1):
+        sep_num = int(i / div)
+        i -= sep_num * div
+        div /= 10
+        seperated_num.append(sep_num)
+    for c in seperated_num:
+        kas += c
+    if kas % 10 == 0:
+        sort_answer.append(i)
+    i += 1
+for a in sort_k:
+    print(sort_answer[a - 1], end=' ')
